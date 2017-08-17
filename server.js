@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articles ={
+var articles = {
     'article-one' : {
         title: 'Article one 1 saravana kumar durai',
         heading: 'article one',
@@ -88,6 +88,7 @@ app.get('/', function (req, res) {
 app.get('/:articlename', function (req, res){
     //articlename == article-one
     //articles[articlename] == {} content object for article one
+    var articlename = req.params.articlename;
     res.send(createtemplate(articles[articlename]));
 });
 
