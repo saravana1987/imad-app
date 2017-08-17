@@ -6,21 +6,42 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleone = {
-    title: 'Article one 1 saravana kumar durai',
-    heading: 'Article One',
-    date:'sep 5, 2016',
-    content: 
-        `<p>
-            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-        </p>
-        <p>
-            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-        </p>
-        <p>
-            This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
-        </p>`
+var articles ={
+    'article-one' : {
+        title: 'Article one 1 saravana kumar durai',
+        heading: 'Article One',
+        date:'sep 5, 2016',
+        content: 
+            `<p>
+                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+            </p>
+            <p>
+                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+            </p>
+            <p>
+                This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.This is the content for my first article.
+            </p>`
+    },
+    'article-two' :{
+        title: 'Article two saravana kumar durai',
+        heading: 'Article two',
+        date:'sep 8, 2016',
+        content: 
+            `<p>
+                This is the content for my second article.
+            </p>`
+    },
+    'article-three' :{
+        title: 'Article two saravana kumar durai',
+        heading: 'Article three',
+        date:'sep 10, 2016',
+        content: 
+            `<p>
+                This is the content for my third article.
+            </p>`
+    }
 };
+    
 
 function createtemplate (data){
     var title = data.title;
@@ -65,15 +86,10 @@ app.get('/', function (req, res) {
 });
 
 app.get('/article-one', function (req, res){
+    //articlename ==article-one
+    //articles[articleName] =={} content object for article one
+    var articlename = req.params.articleName;
     res.send(createtemplate(articleone));
-});
-
-app.get('/article-two', function (req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function (req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
 });
 
 app.get('/ui/style.css', function (req, res) {
