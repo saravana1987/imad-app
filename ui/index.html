@@ -23,8 +23,23 @@
                 <div class="footer">
                     This button <button id="counter">click me!</button> has been clicked <span id="count"></span> times.
                 </div>
-            <script type="text/javascript" src="/ui/main.js">
-            </script>
+                <script type="text/javascript">
+                var button = document.getElementById('counter');
+var counter = 0;
+button.onclick = function () {
+    
+    // move a request to the counter endpoint
+    
+    // capture the response ansd start it in a variable
+   
+    //render the variable in the correct span
+    
+    counter = counter + 1;
+    var span = document.getElementById('count');
+    span.innerHTML = counter.toString();
+};</script>
+            <!--<script type="text/javascript" src="/ui/main.js">
+            </script>-->
         </div>
     </body>
 </html>
